@@ -71,6 +71,16 @@ const showingNavigationDropdown = ref(false);
                                     </template>
                                 </Dropdown>
                             </div>
+
+                            <div v-else class="hidden space-x-8 sm:-my-px sm:-ml-10 sm:flex h-16">
+                                <NavLink :href="route('login')"  :active="route().current('login')">
+                                    Login
+                                </NavLink>
+
+                                <NavLink :href="route('login')"  :active="route().current('login')">
+                                    Register
+                                </NavLink>
+                            </div>
                         </div>
 
                         <!-- Hamburger -->
@@ -119,7 +129,7 @@ const showingNavigationDropdown = ref(false);
 
                     <!-- Responsive Settings Options -->
                     <div class="pt-4 pb-1 border-t border-gray-200">
-                        <div class="px-4">
+                        <div class="px-4" v-if="$page.props.auth.user">
                             <div class="font-medium text-base text-gray-800">
                                 {{ $page.props.auth.user.name }}
                             </div>
